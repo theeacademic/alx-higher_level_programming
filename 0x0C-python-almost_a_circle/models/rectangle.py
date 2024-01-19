@@ -33,8 +33,8 @@ class Rectangle(Base):
         """
         # Call the constructor of the Base class with the provided id
         super().__init__(id)
-        
-        # Set private attributes with provided values
+
+        # Set private attributes with provided values, using the setters
         self.width = width
         self.height = height
         self.x = x
@@ -49,6 +49,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """Setter for width."""
+        self.validate_positive_integer(value, 'width')
         self.__width = value
 
     # Getter and setter for height
@@ -60,6 +61,7 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """Setter for height."""
+        self.validate_positive_integer(value, 'height')
         self.__height = value
 
     # Getter and setter for x
@@ -71,6 +73,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """Setter for x-coordinate."""
+        self.validate_non_negative_integer(value, 'x')
         self.__x = value
 
     # Getter and setter for y
@@ -82,5 +85,40 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """Setter for y-coordinate."""
+        self.validate_non_negative_integer(value, 'y')
         self.__y = value
+
+    def validate_positive_integer(self, value, attribute_name):
+        """
+        Validate that the given value is a positive integer.
+
+        Args:
+            value: The value to be validated.
+            attribute_name (str): The name of the attribute for error message.
+
+        Raises:
+            TypeError: If the value is not an integer.
+            ValueError: If the value is less than or equal to 0.
+        """
+        if not isinstance(value, int):
+            raise TypeError(f"{attribute_name} must be an integer")
+        elif value <= 0:
+            raise ValueError(f"{attribute_name} must be > 0")
+
+    def validate_non_negative_integer(self, value, attribute_name):
+        """
+        Validate that the given value is a non-negative integer.
+
+        Args:
+            value: The value to be validated.
+            attribute_name (str): The name of the attribute for error message.
+
+        Raises:
+            TypeError: If the value is not an integer.
+            ValueError: If the value is less than 0.
+        """
+        if not isinstance(value, int):
+            raise TypeError(f"{attribute_name} must be an integer")
+        elif value < 0:
+            raise ValueError(f"{attribute_name} must be >= 0")
 
