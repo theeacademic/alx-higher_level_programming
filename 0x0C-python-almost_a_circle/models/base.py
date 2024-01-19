@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # models/base.py
 
 class Base:
