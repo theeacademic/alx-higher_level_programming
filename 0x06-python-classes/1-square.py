@@ -11,9 +11,6 @@ class Square:
 
         Args:
             size (int): The size of the square.
-
-        Note:
-            The size is a private attribute.
         """
         self._size = size
 
