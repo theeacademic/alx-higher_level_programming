@@ -18,4 +18,5 @@ class Square:
         Note:
             The size is a private attribute.
         """
+        self._size = size
 
