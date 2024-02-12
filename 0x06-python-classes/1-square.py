@@ -3,12 +3,6 @@
 class Square:
     """
     Represents a square shape.
-
-    Attributes:
-        _size (int): The size of the square (private).
-
-    Methods:
-        None
     """
     def __init__(self, size):
         """
