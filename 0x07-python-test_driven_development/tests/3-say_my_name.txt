@@ -1,0 +1,33 @@
+"""
+This is the "test_say_my_name" module.
+
+The test_say_my_name module supplies one function, test_say_my_name(). For example,
+
+>>> test_say_my_name()
+"""
+
+def test_say_my_name():
+    """
+    Tests for the function say_my_name.
+
+    >>> from your_module import say_my_name  # replace 'your_module' with the name of your module
+    >>> say_my_name("John", "Doe")
+    My name is John Doe
+    >>> say_my_name("John")
+    My name is John 
+    >>> say_my_name(123, "Doe")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+    >>> say_my_name("John", 123)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+    """
+
+    pass
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+

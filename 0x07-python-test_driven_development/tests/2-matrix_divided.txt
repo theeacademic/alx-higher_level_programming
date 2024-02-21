@@ -1,28 +1,41 @@
-import unittest
+"""
+This is the "test_matrix_divided" module.
 
-class TestMatrixDivided(unittest.TestCase):
+The test_matrix_divided module supplies one function, test_matrix_divided(). For example,
+
+>>> test_matrix_divided()
+"""
+
+def test_matrix_divided():
     """
-    Test case for the function matrix_divided.
+    Tests for the function matrix_divided.
+
+    >>> from matrix_divided import matrix_divided
+    >>> matrix_divided([[1, 2], [3, 4]], 2)
+    [[0.5, 1.0], [1.5, 2.0]]
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+    >>> matrix_divided([[1, 2], [3, 4, 5]], 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: Each row of the matrix must have the same size
+    >>> matrix_divided([[1, 2], [3, '4']], 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+    >>> matrix_divided([[1, 2], [3, 4]], '2')
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+    >>> matrix_divided([[1, 2], [3, 4]], 0)
+    Traceback (most recent call last):
+        ...
+    ZeroDivisionError: division by zero
     """
 
-    def test_matrix_divided(self):
-        """
-        Tests for the function matrix_divided.
-        """
+    pass
 
-        # Test with integer inputs
-        self.assertEqual(matrix_divided([[1, 2], [3, 4]], 2), [[0.5, 1.0], [1.5, 2.0]])
-        # Test with float inputs
-        self.assertEqual(matrix_divided([[1.0, 2.0], [3.0, 4.0]], 2.0), [[0.5, 1.0], [1.5, 2.0]])
-        # Test with rows of different sizes
-        self.assertRaises(TypeError, matrix_divided, [[1, 2], [3, 4, 5]], 2)
-        # Test with non-numeric elements in the matrix
-        self.assertRaises(TypeError, matrix_divided, [[1, 2], [3, '4']], 2)
-        # Test with non-numeric div
-        self.assertRaises(TypeError, matrix_divided, [[1, 2], [3, 4]], '2')
-        # Test with div equal to 0
-        self.assertRaises(ZeroDivisionError, matrix_divided, [[1, 2], [3, 4]], 0)
-
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 
