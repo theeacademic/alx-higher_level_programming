@@ -1,13 +1,45 @@
+# test_add_integer.py
 import unittest
-from your_module import add_integer  # replace 'your_module' with the name of your module
+from add_integer import add_integer
 
 class TestAddInteger(unittest.TestCase):
+
     def test_add_integer(self):
-        self.assertEqual(add_integer(1, 2), 3)
-        self.assertEqual(add_integer(-1, 2), 1)
-        self.assertEqual(add_integer(1.5, 2.5), 3)
-        self.assertRaises(TypeError, add_integer, '1', 2)
-        self.assertRaises(TypeError, add_integer, 1, '2')
+        """Test addition of two integers."""
+        self.assertEqual(add_integer(2, 3), 5)
+        self.assertEqual(add_integer(2, -3), -1)
+        self.assertEqual(add_integer(2.0, 3.0), 5)
+        self.assertEqual(add_integer(2.9, 0.2), 2)
+        self.assertEqual(add_integer(-2.9, -0.2), -2)
+        self.assertEqual(add_integer(2.3, -3), -1)
+        self.assertEqual(add_integer(2), 100)
+
+    def test_add_integer_non_numeric_inputs(self):
+        """Test TypeError raised for non-numeric inputs."""
+        with self.assertRaises(TypeError):
+            add_integer("hello", 3)
+        with self.assertRaises(TypeError):
+            add_integer(2, "hello")
+        with self.assertRaises(TypeError):
+            add_integer(None)
+        with self.assertRaises(TypeError):
+            add_integer(2.3, None)
+        with self.assertRaises(TypeError):
+            add_integer("hello", "there")
+
+    def test_add_integer_infinity(self):
+        """Test OverflowError raised for infinity."""
+        with self.assertRaises(OverflowError):
+            add_integer(float('inf'))
+        with self.assertRaises(OverflowError):
+            add_integer(2, float('inf'))
+
+    def test_add_integer_nan(self):
+        """Test ValueError raised for NaN."""
+        with self.assertRaises(ValueError):
+            add_integer(float('nan'))
+        with self.assertRaises(ValueError):
+            add_integer(2, float('nan'))
 
 if __name__ == '__main__':
     unittest.main()

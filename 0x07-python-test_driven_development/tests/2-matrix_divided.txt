@@ -1,0 +1,28 @@
+import unittest
+
+class TestMatrixDivided(unittest.TestCase):
+    """
+    Test case for the function matrix_divided.
+    """
+
+    def test_matrix_divided(self):
+        """
+        Tests for the function matrix_divided.
+        """
+
+        # Test with integer inputs
+        self.assertEqual(matrix_divided([[1, 2], [3, 4]], 2), [[0.5, 1.0], [1.5, 2.0]])
+        # Test with float inputs
+        self.assertEqual(matrix_divided([[1.0, 2.0], [3.0, 4.0]], 2.0), [[0.5, 1.0], [1.5, 2.0]])
+        # Test with rows of different sizes
+        self.assertRaises(TypeError, matrix_divided, [[1, 2], [3, 4, 5]], 2)
+        # Test with non-numeric elements in the matrix
+        self.assertRaises(TypeError, matrix_divided, [[1, 2], [3, '4']], 2)
+        # Test with non-numeric div
+        self.assertRaises(TypeError, matrix_divided, [[1, 2], [3, 4]], '2')
+        # Test with div equal to 0
+        self.assertRaises(ZeroDivisionError, matrix_divided, [[1, 2], [3, 4]], 0)
+
+if __name__ == '__main__':
+    unittest.main()
+
