@@ -1,0 +1,44 @@
+"""
+This is the "test_print_square" module.
+
+The test_print_square module supplies one function, test_print_square(). For example,
+
+>>> test_print_square()
+"""
+
+def test_print_square():
+    """
+    Tests for the function print_square.
+
+    >>> from print_square import print_square
+    >>> print_square(3)
+    ###
+    ###
+    ###
+    >>> print_square(0)
+    <BLANKLINE>
+    >>> print_square(4.0)
+    ####
+    ####
+    ####
+    ####
+    >>> print_square(-1)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
+    >>> print_square(4.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+    >>> print_square("4")
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+    """
+
+    pass
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
